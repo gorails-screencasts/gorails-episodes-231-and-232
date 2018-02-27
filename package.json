@@ -1,0 +1,10 @@
+{
+  "name": "tweeter",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.2.2"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.0.0"
+  }
+}
