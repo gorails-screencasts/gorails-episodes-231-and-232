@@ -1,0 +1,28 @@
+<%= form_with(model: tweet, class: local_assigns[:class], data: { controller: "tweet-form", target: "inline-edit.form", action: "ajax:beforeSend->tweet-form#submit" }) do |form| %>
+  <% if tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+      <ul>
+      <% tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.text_area :body, class: "form-control", placeholder: "Tweet your thoughts...", data: { target: "tweet-form.body", action: "keyup->tweet-form#update" } %>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-6">
+        <span data-target="tweet-form.characterCount"></span>
+      </div>
+      <div class="col-sm-6 text-right">
+        <%= form.submit class: "btn btn-primary"%>
+      </div>
+    </div>
+  </div>
+<% end %>
